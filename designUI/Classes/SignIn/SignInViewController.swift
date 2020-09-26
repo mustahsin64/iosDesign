@@ -15,6 +15,9 @@ class SignInViewController: UIViewController {
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
     
+    @IBOutlet var emailHolderView: UIView!
+    @IBOutlet var passwordHolderView: UIView!
+    
     //MARK: properties
     var signinLogic: SignInInteractor?
 
@@ -22,9 +25,15 @@ class SignInViewController: UIViewController {
     //MARK: View Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        customizeUI()
     }
     
     //MARK: Internal methods
+    
+    private func customizeUI(){
+        emailHolderView.giveGenericBorder()
+        passwordHolderView.giveGenericBorder()
+    }
     
     private func validateInput() -> Bool
     {
@@ -48,12 +57,21 @@ class SignInViewController: UIViewController {
     {
         if(validateInput()){
             signinLogic = SignInInteractor.init(email: emailField.text!, password: passwordField.text!)
+            signinLogic?.delegate = self
             signinLogic?.callSignInAPI()
         }
         else{
             self.showToastAtBottom(message: "All fields are required")
         }
     }
+}
+
+extension SignInViewController: SignInLogicProtocol{
+    func signInFailed(with errorMsg: String) {
+        self.showToastAtBottom(message: errorMsg)
+    }
+    
+    
 }
 
 
