@@ -33,6 +33,13 @@ class SignInViewController: UIViewController {
     private func customizeUI(){
         emailHolderView.giveGenericBorder()
         passwordHolderView.giveGenericBorder()
+        
+        testFillup()
+    }
+    
+    private func testFillup(){
+        self.emailField.text = "testsiam@test.com"
+        self.passwordField.text = "narutosh129"
     }
     
     private func validateInput() -> Bool
@@ -71,6 +78,9 @@ extension SignInViewController: SignInLogicProtocol{
         self.showToastAtBottom(message: errorMsg)
     }
     
+    func signInSuccessful() {
+        Router.shared.gotoMainTab(from: self)
+    }
     
 }
 

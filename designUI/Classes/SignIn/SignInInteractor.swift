@@ -9,6 +9,7 @@
 import UIKit
 
 protocol SignInLogicProtocol {
+    func signInSuccessful()
     func signInFailed(with errorMsg:String)
 }
 
@@ -38,7 +39,14 @@ class SignInInteractor: NSObject {
 }
 
 extension SignInInteractor: SignInAPIProtocol{
-    func signInResponse(response: SignInJson) {
+    
+    func signInSuccess(response: signInSuccessJson) {
+        if let delegate = self.delegate{
+            delegate.signInSuccessful()
+        }
+    }
+    
+    func signInResponse(response: SignInFailedJson) {
         print(response.response)
         print(response.success)
         
@@ -48,4 +56,5 @@ extension SignInInteractor: SignInAPIProtocol{
             }
         }
     }
+    
 }

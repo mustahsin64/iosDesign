@@ -12,6 +12,9 @@
 		1539AD16251EFBC2004B11FC /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539AD15251EFBC2004B11FC /* SignInModel.swift */; };
 		1539AD28251F02F3004B11FC /* SignInInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539AD27251F02F3004B11FC /* SignInInteractor.swift */; };
 		1539AD2E251F0BAF004B11FC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539AD2D251F0BAF004B11FC /* Extensions.swift */; };
+		1539ADD8251F774B004B11FC /* HomeTabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1539ADD7251F774B004B11FC /* HomeTabbar.storyboard */; };
+		1539ADED251F7B22004B11FC /* HomeTabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539ADEC251F7B22004B11FC /* HomeTabbarVC.swift */; };
+		1539ADF2251F7D07004B11FC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539ADF1251F7D07004B11FC /* Router.swift */; };
 		15AEE674251DEED5002E4DE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AEE673251DEED5002E4DE5 /* AppDelegate.swift */; };
 		15AEE676251DEED5002E4DE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AEE675251DEED5002E4DE5 /* SceneDelegate.swift */; };
 		15AEE678251DEED5002E4DE5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AEE677251DEED5002E4DE5 /* SignInViewController.swift */; };
@@ -49,6 +52,10 @@
 		1539AD15251EFBC2004B11FC /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		1539AD27251F02F3004B11FC /* SignInInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInInteractor.swift; sourceTree = "<group>"; };
 		1539AD2D251F0BAF004B11FC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1539ADD3251F73B8004B11FC /* api_response.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = api_response.md; sourceTree = "<group>"; };
+		1539ADD7251F774B004B11FC /* HomeTabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeTabbar.storyboard; sourceTree = "<group>"; };
+		1539ADEC251F7B22004B11FC /* HomeTabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabbarVC.swift; sourceTree = "<group>"; };
+		1539ADF1251F7D07004B11FC /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		15AEE670251DEED5002E4DE5 /* designUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = designUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15AEE673251DEED5002E4DE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15AEE675251DEED5002E4DE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +114,7 @@
 				1539AD14251EFBA6004B11FC /* CodableJsonModels */,
 				1539ACE3251EF73D004B11FC /* APIManager.swift */,
 				1539AD0F251EF80D004B11FC /* APIConstant.swift */,
+				1539ADD3251F73B8004B11FC /* api_response.md */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -123,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				1539AD1B251F023D004B11FC /* SignIn */,
+				1539ADEC251F7B22004B11FC /* HomeTabbarVC.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -140,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				1539AD2D251F0BAF004B11FC /* Extensions.swift */,
+				1539ADF1251F7D07004B11FC /* Router.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -169,15 +179,16 @@
 		15AEE672251DEED5002E4DE5 /* designUI */ = {
 			isa = PBXGroup;
 			children = (
-				1539AD2C251F0B99004B11FC /* Utilities */,
-				1539AD1A251F023D004B11FC /* Classes */,
-				1539ACE2251EF72D004B11FC /* API */,
+				15AEE681251DEED6002E4DE5 /* Info.plist */,
 				15AEE673251DEED5002E4DE5 /* AppDelegate.swift */,
 				15AEE675251DEED5002E4DE5 /* SceneDelegate.swift */,
-				15AEE679251DEED5002E4DE5 /* Main.storyboard */,
 				15AEE67C251DEED6002E4DE5 /* Assets.xcassets */,
+				1539ACE2251EF72D004B11FC /* API */,
+				1539AD1A251F023D004B11FC /* Classes */,
 				15AEE67E251DEED6002E4DE5 /* LaunchScreen.storyboard */,
-				15AEE681251DEED6002E4DE5 /* Info.plist */,
+				15AEE679251DEED5002E4DE5 /* Main.storyboard */,
+				1539AD2C251F0B99004B11FC /* Utilities */,
+				1539ADD7251F774B004B11FC /* HomeTabbar.storyboard */,
 			);
 			path = designUI;
 			sourceTree = "<group>";
@@ -333,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15AEE680251DEED6002E4DE5 /* LaunchScreen.storyboard in Resources */,
+				1539ADD8251F774B004B11FC /* HomeTabbar.storyboard in Resources */,
 				15AEE67D251DEED6002E4DE5 /* Assets.xcassets in Resources */,
 				15AEE67B251DEED5002E4DE5 /* Main.storyboard in Resources */,
 			);
@@ -464,6 +476,8 @@
 			files = (
 				1539ACE4251EF73D004B11FC /* APIManager.swift in Sources */,
 				15AEE678251DEED5002E4DE5 /* SignInViewController.swift in Sources */,
+				1539ADF2251F7D07004B11FC /* Router.swift in Sources */,
+				1539ADED251F7B22004B11FC /* HomeTabbarVC.swift in Sources */,
 				15AEE674251DEED5002E4DE5 /* AppDelegate.swift in Sources */,
 				1539AD2E251F0BAF004B11FC /* Extensions.swift in Sources */,
 				1539AD10251EF80D004B11FC /* APIConstant.swift in Sources */,

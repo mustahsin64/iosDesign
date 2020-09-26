@@ -9,8 +9,11 @@
 import UIKit
 import Alamofire
 
+let debugAPILog:Bool = true
+
 protocol SignInAPIProtocol {
-    func signInResponse(response:SignInJson)
+    func signInResponse(response:SignInFailedJson)
+    func signInSuccess(response: signInSuccessJson)
 }
 
 class APIManager: NSObject {
@@ -27,33 +30,71 @@ class APIManager: NSObject {
     
     func signIn(with email:String,and password:String){
         
-        let params = ["os_info":UIDevice.current.systemVersion as AnyObject,"device":UIDevice.current.model as AnyObject,"email":email.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines),"password":"1234".trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)] as Dictionary<String, AnyObject>
+        let params = ["os_info":UIDevice.current.systemVersion as AnyObject,"device":UIDevice.current.model as AnyObject,"email":email.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines),"password":password.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)] as Dictionary<String, AnyObject>
         let strEncoded:String = baseURL+"signIn"
         
-        print("\(strEncoded) \(params)")
+        if(debugAPILog){print("\(strEncoded) \(params)")}
         
-        _ = AF.request(strEncoded,method: .post,parameters: params)
+        
+        
+        let request = AF.request(strEncoded,method: .post,parameters: params)
             .validate()
-            .responseDecodable(of: SignInJson.self) { (response) in
-                guard let result = response.value else {return}
-                print(result)
+        request.responseDecodable(of: signInSuccessJson.self) { (response) in
+            if let result = response.value{
+                // signIn successful response
+                if(debugAPILog){print(result)}
                 if let delegate = self.delegate{
-                    delegate.signInResponse(response: result)
+                    delegate.signInSuccess(response: result)
                 }
             }
+            else{
+                request.responseDecodable(of: SignInFailedJson.self) { (response) in
+                    if let result = response.value {
+                        // signIn failed response
+                        if let delegate = self.delegate{
+                            delegate.signInResponse(response: result)
+                        }
+                    }
+                    else{
+                        if let delegate = self.delegate{
+                            let error = SignInFailedJson.init(response: "Failed", success: "false")
+                            delegate.signInResponse(response: error)
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+//        var request = AF.request(strEncoded,method: .post,parameters: params)
+//            .validate()
+//            .responseDecodable(of: SignInJson.self) { (response) in
+//                guard let result = response.value else
+//                {
+//                    return
+//
+//                }
+//                print(result)
+//                if let delegate = self.delegate{
+//                    delegate.signInResponse(response: result)
+//                }
+//            }
         
 //        let request = AF.request(strEncoded,method: .post,parameters: params)
 //        request.responseJSON { (data) in
 //            print(data)
 //        }
-//
-        
     }
 
 }
 
 extension SignInAPIProtocol{
-    func signInResponse(response:SignInJson){
+    func signInResponse(response:SignInFailedJson){
+        
+    }
+    
+    func signInSuccess(response: signInSuccessJson)
+    {
         
     }
 }
