@@ -71,3 +71,12 @@ extension UIView{
         self.layer.borderWidth = 0.5
     }
 }
+
+extension UITextField{
+    func giveDefaultPlaceHolder(text:String)
+    {
+        self.attributedPlaceholder = NSAttributedString(string:text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+    }
+}
+
+

@@ -15,6 +15,9 @@
 		1539ADD8251F774B004B11FC /* HomeTabbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1539ADD7251F774B004B11FC /* HomeTabbar.storyboard */; };
 		1539ADED251F7B22004B11FC /* HomeTabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539ADEC251F7B22004B11FC /* HomeTabbarVC.swift */; };
 		1539ADF2251F7D07004B11FC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539ADF1251F7D07004B11FC /* Router.swift */; };
+		1539ADF9251FA567004B11FC /* OrderTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539ADF8251FA567004B11FC /* OrderTopView.swift */; };
+		1539ADFE251FA57F004B11FC /* OrderTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1539ADFD251FA57F004B11FC /* OrderTopView.xib */; };
+		1539AE04251FAD49004B11FC /* CurrentOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539AE03251FAD49004B11FC /* CurrentOrderVC.swift */; };
 		15AEE674251DEED5002E4DE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AEE673251DEED5002E4DE5 /* AppDelegate.swift */; };
 		15AEE676251DEED5002E4DE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AEE675251DEED5002E4DE5 /* SceneDelegate.swift */; };
 		15AEE678251DEED5002E4DE5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AEE677251DEED5002E4DE5 /* SignInViewController.swift */; };
@@ -56,6 +59,9 @@
 		1539ADD7251F774B004B11FC /* HomeTabbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeTabbar.storyboard; sourceTree = "<group>"; };
 		1539ADEC251F7B22004B11FC /* HomeTabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabbarVC.swift; sourceTree = "<group>"; };
 		1539ADF1251F7D07004B11FC /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		1539ADF8251FA567004B11FC /* OrderTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTopView.swift; sourceTree = "<group>"; };
+		1539ADFD251FA57F004B11FC /* OrderTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTopView.xib; sourceTree = "<group>"; };
+		1539AE03251FAD49004B11FC /* CurrentOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentOrderVC.swift; sourceTree = "<group>"; };
 		15AEE670251DEED5002E4DE5 /* designUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = designUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15AEE673251DEED5002E4DE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15AEE675251DEED5002E4DE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +136,7 @@
 		1539AD1A251F023D004B11FC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1539AE02251FAD35004B11FC /* CurrentOrder */,
 				1539AD1B251F023D004B11FC /* SignIn */,
 				1539ADEC251F7B22004B11FC /* HomeTabbarVC.swift */,
 			);
@@ -148,10 +155,28 @@
 		1539AD2C251F0B99004B11FC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				1539ADF7251FA54E004B11FC /* CustomViews */,
 				1539AD2D251F0BAF004B11FC /* Extensions.swift */,
 				1539ADF1251F7D07004B11FC /* Router.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		1539ADF7251FA54E004B11FC /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				1539ADF8251FA567004B11FC /* OrderTopView.swift */,
+				1539ADFD251FA57F004B11FC /* OrderTopView.xib */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		1539AE02251FAD35004B11FC /* CurrentOrder */ = {
+			isa = PBXGroup;
+			children = (
+				1539AE03251FAD49004B11FC /* CurrentOrderVC.swift */,
+			);
+			path = CurrentOrder;
 			sourceTree = "<group>";
 		};
 		15AEE667251DEED5002E4DE5 = {
@@ -347,6 +372,7 @@
 				1539ADD8251F774B004B11FC /* HomeTabbar.storyboard in Resources */,
 				15AEE67D251DEED6002E4DE5 /* Assets.xcassets in Resources */,
 				15AEE67B251DEED5002E4DE5 /* Main.storyboard in Resources */,
+				1539ADFE251FA57F004B11FC /* OrderTopView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +502,7 @@
 			files = (
 				1539ACE4251EF73D004B11FC /* APIManager.swift in Sources */,
 				15AEE678251DEED5002E4DE5 /* SignInViewController.swift in Sources */,
+				1539ADF9251FA567004B11FC /* OrderTopView.swift in Sources */,
 				1539ADF2251F7D07004B11FC /* Router.swift in Sources */,
 				1539ADED251F7B22004B11FC /* HomeTabbarVC.swift in Sources */,
 				15AEE674251DEED5002E4DE5 /* AppDelegate.swift in Sources */,
@@ -484,6 +511,7 @@
 				15AEE676251DEED5002E4DE5 /* SceneDelegate.swift in Sources */,
 				1539AD28251F02F3004B11FC /* SignInInteractor.swift in Sources */,
 				1539AD16251EFBC2004B11FC /* SignInModel.swift in Sources */,
+				1539AE04251FAD49004B11FC /* CurrentOrderVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

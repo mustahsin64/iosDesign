@@ -26,6 +26,12 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeUI()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //Router.shared.gotoMainTab(from: self)
     }
     
     //MARK: Internal methods
@@ -33,6 +39,13 @@ class SignInViewController: UIViewController {
     private func customizeUI(){
         emailHolderView.giveGenericBorder()
         passwordHolderView.giveGenericBorder()
+        
+        emailField.delegate = self
+        passwordField.delegate = self
+        
+        emailField.giveDefaultPlaceHolder(text: "Enter Email or Phone number")
+        passwordField.giveDefaultPlaceHolder(text: "Enter password")
+        
         
         testFillup()
     }
@@ -70,6 +83,14 @@ class SignInViewController: UIViewController {
         else{
             self.showToastAtBottom(message: "All fields are required")
         }
+    }
+}
+
+extension SignInViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        return true
     }
 }
 
