@@ -26,12 +26,12 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeUI()
-        
+        //appearWrongInput(v: emailHolderView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Router.shared.gotoMainTab(from: self)
+        //Router.shared.gotoMainTab(from: self)
     }
     
     //MARK: Internal methods
@@ -39,6 +39,9 @@ class SignInViewController: UIViewController {
     private func customizeUI(){
         emailHolderView.giveGenericBorder()
         passwordHolderView.giveGenericBorder()
+        
+        emailHolderView.giveRoundedCorner(value: 5)
+        passwordHolderView.giveRoundedCorner(value: 5)
         
         emailField.delegate = self
         passwordField.delegate = self
@@ -57,20 +60,44 @@ class SignInViewController: UIViewController {
     
     private func validateInput() -> Bool
     {
+        var validation = true
         if let email = self.emailField.text{
             if(email.isEmpty){
-                return false
+                appearWrongInput(v: emailHolderView)
+                validation = false
+                //return false
+            }
+            else{
+                appearCorrectInput(v: emailHolderView)
             }
         }
         
         if let password = self.passwordField.text{
             if(password.isEmpty){
-                return false
+                appearWrongInput(v: passwordHolderView)
+                validation = false
+            }
+            else{
+                appearCorrectInput(v: passwordHolderView)
             }
         }
         
-        return true
+        return validation
     }
+    
+    private func appearWrongInput(v:UIView)
+    {
+        v.setBorderColor(color: .red)
+        v.backgroundColor = UIColor.init(named: "inputError")
+    }
+    
+    private func appearCorrectInput(v:UIView)
+    {
+        v.setBorderColor(color: UIColor.init(named: "correctInput") ?? .green)
+        v.backgroundColor = .clear
+    }
+    
+    
     
     //MARK: IBActions
     @IBAction func SignInClicked(_ sender: UIButton)

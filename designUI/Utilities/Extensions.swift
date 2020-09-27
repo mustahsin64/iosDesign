@@ -81,6 +81,12 @@ extension UIView{
         self.layer.cornerRadius = self.frame.size.height/2
         self.layer.masksToBounds = true
     }
+    
+    func setBorderColor(color:UIColor)
+    {
+        self.layer.borderColor = color.cgColor
+        self.layer.masksToBounds = true
+    }
 }
 
 extension UITextField{
