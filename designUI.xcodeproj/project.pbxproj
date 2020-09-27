@@ -19,6 +19,7 @@
 		1539AE04251FAD49004B11FC /* CurrentOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539AE03251FAD49004B11FC /* CurrentOrderVC.swift */; };
 		158797852520DEA500024C81 /* NotificationBellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 158797842520DEA500024C81 /* NotificationBellView.xib */; };
 		1587978A2520E11C00024C81 /* NotificationBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158797892520E11C00024C81 /* NotificationBellView.swift */; };
+		158797A62520EBAC00024C81 /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158797A52520EBAC00024C81 /* LaunchScreenVC.swift */; };
 		15AEE674251DEED5002E4DE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AEE673251DEED5002E4DE5 /* AppDelegate.swift */; };
 		15AEE676251DEED5002E4DE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AEE675251DEED5002E4DE5 /* SceneDelegate.swift */; };
 		15AEE678251DEED5002E4DE5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AEE677251DEED5002E4DE5 /* SignInViewController.swift */; };
@@ -65,6 +66,7 @@
 		1587974F2520C76A00024C81 /* SDWebImageMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImageMapKit.framework; path = ../../Desktop/untitled/Carthage/Build/iOS/SDWebImageMapKit.framework; sourceTree = "<group>"; };
 		158797842520DEA500024C81 /* NotificationBellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationBellView.xib; sourceTree = "<group>"; };
 		158797892520E11C00024C81 /* NotificationBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBellView.swift; sourceTree = "<group>"; };
+		158797A52520EBAC00024C81 /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		15AEE670251DEED5002E4DE5 /* designUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = designUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15AEE673251DEED5002E4DE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15AEE675251DEED5002E4DE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				1539AE02251FAD35004B11FC /* CurrentOrder */,
 				1539ADEC251F7B22004B11FC /* HomeTabbarVC.swift */,
 				1539AD1B251F023D004B11FC /* SignIn */,
+				158797A52520EBAC00024C81 /* LaunchScreenVC.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				1539AD10251EF80D004B11FC /* APIConstant.swift in Sources */,
 				15AEE676251DEED5002E4DE5 /* SceneDelegate.swift in Sources */,
 				1539AD28251F02F3004B11FC /* SignInInteractor.swift in Sources */,
+				158797A62520EBAC00024C81 /* LaunchScreenVC.swift in Sources */,
 				1539AD16251EFBC2004B11FC /* SignInModel.swift in Sources */,
 				1539AE04251FAD49004B11FC /* CurrentOrderVC.swift in Sources */,
 			);
