@@ -76,6 +76,11 @@ extension UIView{
         self.layer.cornerRadius = CGFloat(value)
         self.layer.masksToBounds = true
     }
+    
+    func makeCircular(){
+        self.layer.cornerRadius = self.frame.size.height/2
+        self.layer.masksToBounds = true
+    }
 }
 
 extension UITextField{
@@ -86,10 +91,10 @@ extension UITextField{
 }
 
 extension UIImageView{
-    func makeCircular(){
-        self.layer.cornerRadius = self.frame.size.height/2
-        self.layer.masksToBounds = true
-    }
+//    func makeCircular(){
+//        self.layer.cornerRadius = self.frame.size.height/2
+//        self.layer.masksToBounds = true
+//    }
 }
 
 

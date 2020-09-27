@@ -15,7 +15,7 @@ protocol SignInLogicProtocol {
 
 class SignInInteractor: NSObject {
     
-    let apimanager = APIManager()
+    let apimanager = ProfileAPIManager()
     var delegate: SignInLogicProtocol?
     
     var email:String = ""

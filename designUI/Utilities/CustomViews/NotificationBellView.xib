@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NotificationBellView" customModule="designUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gS-la-pQJ">
+                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell_icon" translatesAutoresizingMaskIntoConstraints="NO" id="B8Z-AB-JBU">
+                            <rect key="frame" x="7" y="7" width="26" height="26"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="B8Z-AB-JBU" firstAttribute="top" secondItem="4gS-la-pQJ" secondAttribute="top" constant="7" id="24o-q2-aFY"/>
+                        <constraint firstAttribute="trailing" secondItem="B8Z-AB-JBU" secondAttribute="trailing" constant="7" id="Ipg-BL-3Or"/>
+                        <constraint firstAttribute="bottom" secondItem="B8Z-AB-JBU" secondAttribute="bottom" constant="7" id="m0l-7G-ag6"/>
+                        <constraint firstItem="B8Z-AB-JBU" firstAttribute="leading" secondItem="4gS-la-pQJ" secondAttribute="leading" constant="7" id="ut2-AF-DW5"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="4gS-la-pQJ" secondAttribute="bottom" id="TwA-Ib-aXs"/>
+                <constraint firstAttribute="trailing" secondItem="4gS-la-pQJ" secondAttribute="trailing" id="gfS-BZ-Dbk"/>
+                <constraint firstItem="4gS-la-pQJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hmM-7d-Q0g"/>
+                <constraint firstItem="4gS-la-pQJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="q6p-JS-DBs"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="contentView" destination="4gS-la-pQJ" id="c5h-MJ-GtJ"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="41"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bell_icon" width="20" height="21"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -16,7 +16,7 @@ protocol SignInAPIProtocol {
     func signInSuccess(response: signInSuccessJson)
 }
 
-class APIManager: NSObject {
+class ProfileAPIManager: NSObject {
     
     var delegate: SignInAPIProtocol? = nil
     
