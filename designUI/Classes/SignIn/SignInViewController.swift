@@ -31,7 +31,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //Router.shared.gotoMainTab(from: self)
+        Router.shared.gotoMainTab(from: self)
     }
     
     //MARK: Internal methods

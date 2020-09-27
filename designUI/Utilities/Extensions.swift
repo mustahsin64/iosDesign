@@ -66,9 +66,15 @@ extension UIViewController{
 }
 
 extension UIView{
+    
     func giveGenericBorder(){
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.borderWidth = 0.5
+    }
+    
+    func giveRoundedCorner(value:Float){
+        self.layer.cornerRadius = CGFloat(value)
+        self.layer.masksToBounds = true
     }
 }
 
@@ -76,6 +82,13 @@ extension UITextField{
     func giveDefaultPlaceHolder(text:String)
     {
         self.attributedPlaceholder = NSAttributedString(string:text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+    }
+}
+
+extension UIImageView{
+    func makeCircular(){
+        self.layer.cornerRadius = self.frame.size.height/2
+        self.layer.masksToBounds = true
     }
 }
 

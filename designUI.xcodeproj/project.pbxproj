@@ -16,7 +16,6 @@
 		1539ADED251F7B22004B11FC /* HomeTabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539ADEC251F7B22004B11FC /* HomeTabbarVC.swift */; };
 		1539ADF2251F7D07004B11FC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539ADF1251F7D07004B11FC /* Router.swift */; };
 		1539ADF9251FA567004B11FC /* OrderTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539ADF8251FA567004B11FC /* OrderTopView.swift */; };
-		1539ADFE251FA57F004B11FC /* OrderTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1539ADFD251FA57F004B11FC /* OrderTopView.xib */; };
 		1539AE04251FAD49004B11FC /* CurrentOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539AE03251FAD49004B11FC /* CurrentOrderVC.swift */; };
 		15AEE674251DEED5002E4DE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AEE673251DEED5002E4DE5 /* AppDelegate.swift */; };
 		15AEE676251DEED5002E4DE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AEE675251DEED5002E4DE5 /* SceneDelegate.swift */; };
@@ -60,8 +59,8 @@
 		1539ADEC251F7B22004B11FC /* HomeTabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabbarVC.swift; sourceTree = "<group>"; };
 		1539ADF1251F7D07004B11FC /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1539ADF8251FA567004B11FC /* OrderTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTopView.swift; sourceTree = "<group>"; };
-		1539ADFD251FA57F004B11FC /* OrderTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTopView.xib; sourceTree = "<group>"; };
 		1539AE03251FAD49004B11FC /* CurrentOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentOrderVC.swift; sourceTree = "<group>"; };
+		1587974F2520C76A00024C81 /* SDWebImageMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImageMapKit.framework; path = ../../Desktop/untitled/Carthage/Build/iOS/SDWebImageMapKit.framework; sourceTree = "<group>"; };
 		15AEE670251DEED5002E4DE5 /* designUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = designUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15AEE673251DEED5002E4DE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15AEE675251DEED5002E4DE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				1539ADF8251FA567004B11FC /* OrderTopView.swift */,
-				1539ADFD251FA57F004B11FC /* OrderTopView.xib */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -252,6 +250,7 @@
 		F06365F877CF0D60A6019F91 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1587974F2520C76A00024C81 /* SDWebImageMapKit.framework */,
 				FE4C87B80D6C34A6BD5AA81B /* Pods_designUI.framework */,
 				DDE1F9E4734285C4F15329CE /* Pods_designUI_designUIUITests.framework */,
 				2B2E64CB2ACB66F792666194 /* Pods_designUITests.framework */,
@@ -372,7 +371,6 @@
 				1539ADD8251F774B004B11FC /* HomeTabbar.storyboard in Resources */,
 				15AEE67D251DEED6002E4DE5 /* Assets.xcassets in Resources */,
 				15AEE67B251DEED5002E4DE5 /* Main.storyboard in Resources */,
-				1539ADFE251FA57F004B11FC /* OrderTopView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

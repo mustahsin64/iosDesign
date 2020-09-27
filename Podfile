@@ -7,6 +7,7 @@ target 'designUI' do
 
   # Pods for designUI
 pod 'Alamofire', '~> 5.2'
+pod 'SDWebImage'
 
   target 'designUITests' do
     inherit! :search_paths
