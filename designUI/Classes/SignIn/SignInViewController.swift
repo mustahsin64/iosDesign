@@ -14,12 +14,18 @@ class SignInViewController: UIViewController {
     //MARK: IBLayouts
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
+    @IBOutlet var wrongEmailLabel: UILabel!
+    @IBOutlet var wrongPasswordLabel: UILabel!
+    
+    @IBOutlet var signInButton: UIButton!
     
     @IBOutlet var emailHolderView: UIView!
     @IBOutlet var passwordHolderView: UIView!
     
     //MARK: properties
     var signinLogic: SignInInteractor?
+    var validEmail = false
+    var validPassword = false
 
     
     //MARK: View Cycle
@@ -31,6 +37,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        emailField.becomeFirstResponder()
         //Router.shared.gotoMainTab(from: self)
     }
     
@@ -50,7 +57,7 @@ class SignInViewController: UIViewController {
         passwordField.giveDefaultPlaceHolder(text: "Enter password")
         
         
-        testFillup()
+        //testFillup()
     }
     
     private func testFillup(){
@@ -58,51 +65,10 @@ class SignInViewController: UIViewController {
         self.passwordField.text = "narutosh129"
     }
     
-    private func validateInput() -> Bool
-    {
-        var validation = true
-        if let email = self.emailField.text{
-            if(email.isEmpty){
-                appearWrongInput(v: emailHolderView)
-                validation = false
-                //return false
-            }
-            else{
-                appearCorrectInput(v: emailHolderView)
-            }
-        }
-        
-        if let password = self.passwordField.text{
-            if(password.isEmpty){
-                appearWrongInput(v: passwordHolderView)
-                validation = false
-            }
-            else{
-                appearCorrectInput(v: passwordHolderView)
-            }
-        }
-        
-        return validation
-    }
-    
-    private func appearWrongInput(v:UIView)
-    {
-        v.setBorderColor(color: .red)
-        v.backgroundColor = UIColor.init(named: "inputError")
-    }
-    
-    private func appearCorrectInput(v:UIView)
-    {
-        v.setBorderColor(color: UIColor.init(named: "correctInput") ?? .green)
-        v.backgroundColor = .clear
-    }
-    
-    
-    
     //MARK: IBActions
     @IBAction func SignInClicked(_ sender: UIButton)
     {
-        if(validateInput()){
+        if(validEmail && validPassword){
             signinLogic = SignInInteractor.init(email: emailField.text!, password: passwordField.text!)
             signinLogic?.delegate = self
             signinLogic?.callSignInAPI()
@@ -111,13 +77,145 @@ class SignInViewController: UIViewController {
             self.showToastAtBottom(message: "All fields are required")
         }
     }
+    
+    
+    @IBAction func emailEditingChanged(_ sender: UITextField) {
+        colorizeFiledsAccordingToValidity(currentText: sender.text ?? "", textField: emailField)
+    }
+    
+    @IBAction func passwordEditingChanged(_ sender: UITextField) {
+        colorizeFiledsAccordingToValidity(currentText: sender.text ?? "", textField: passwordField)
+    }
+    
+    //MARK:validation
+    
+    private func validateEmail(text:String) -> Bool
+    {
+        var validation = true
+        if(!text.isValidEmail(text))
+        {
+            validation = false
+        }
+        return validation
+    }
+    
+    private func validatePassword(text:String) -> Bool
+    {
+        var validation = true
+        if(text.count < 10){
+            validation = false
+        }
+        return validation
+    }
+    
+    private func hideWithAnimation(hide:Bool, label:UILabel)
+    {
+        if(hide)
+        {
+            UIView.transition(with: label, duration: 0.2,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                                label.isHidden = hide
+                          })
+        }
+        else{
+            UIView.transition(with: label, duration: 0.2,
+                              options: .curveEaseIn,
+                              animations: {
+                                label.isHidden = hide
+                          })
+        }
+    }
+    
+    private func colorizeFiledsAccordingToValidity(currentText:String,textField:UITextField)
+    {
+        if(textField == emailField){
+            if(self.validateEmail(text: currentText))
+            {
+                validEmail = true
+                hideWithAnimation(hide: true, label: wrongEmailLabel)
+                //wrongEmailLabel.isHidden = true
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+                    self.appearCorrectInput(v: self.emailHolderView)
+                }
+            }
+            else
+            {
+                validEmail = false
+                hideWithAnimation(hide: false, label: wrongEmailLabel)
+                //wrongEmailLabel.isHidden = false
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+                    self.appearWrongInput(v: self.emailHolderView)
+                }
+            }
+        }
+        else if(textField == passwordField){
+            
+            if(self.validatePassword(text: currentText))
+            {
+                validPassword = true
+                hideWithAnimation(hide: true, label: wrongPasswordLabel)
+                //wrongPasswordLabel.isHidden = true
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+                    self.appearCorrectInput(v: self.passwordHolderView)
+                }
+            }
+            else
+            {
+                validPassword = false
+                hideWithAnimation(hide: false, label: wrongPasswordLabel)
+                //wrongPasswordLabel.isHidden = false
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+                    self.appearWrongInput(v: self.passwordHolderView)
+                }
+            }
+        }
+        
+        if(validEmail && validPassword)
+        {
+            self.signInButton.backgroundColor = UIColor(named: "correctInput")
+        }
+        else
+        {
+            self.signInButton.backgroundColor = UIColor(red: 234/255, green: 234/255, blue: 234/255, alpha: 1)
+        }
+    }
+    
+    private func validateInput() -> Bool
+    {
+        return true
+    }
+    
+    private func appearWrongInput(v:UIView)
+    {
+        v.setBorderColor(color: .red)
+        v.backgroundColor = UIColor.init(named: "inputError")
+        v.removeBottomShadow()
+    }
+    
+    private func appearCorrectInput(v:UIView)
+    {
+        v.setBorderColor(color: UIColor.init(named: "correctInput") ?? .green)
+        v.backgroundColor = .clear
+        v.addBottomShadow()
+    }
 }
+
+
 
 extension SignInViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
         return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
     }
 }
 

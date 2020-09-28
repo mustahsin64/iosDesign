@@ -87,6 +87,30 @@ extension UIView{
         self.layer.borderColor = color.cgColor
         self.layer.masksToBounds = true
     }
+    
+    func addBottomShadow() {
+        layer.masksToBounds = false
+        layer.shadowRadius = 2
+        layer.shadowOpacity = 0.3
+        layer.shadowColor = UIColor.gray.cgColor
+        layer.shadowOffset = CGSize(width: 0 , height: 2)
+        layer.shadowPath = UIBezierPath(rect: CGRect(x: 0,
+                                                     y: bounds.maxY - layer.shadowRadius,
+                                                     width: bounds.width,
+                                                     height: layer.shadowRadius)).cgPath
+    }
+    
+    func removeBottomShadow() {
+        layer.masksToBounds = true
+        layer.shadowRadius = 0
+        layer.shadowOpacity = 0
+        layer.shadowColor = UIColor.clear.cgColor
+        layer.shadowOffset = CGSize(width: 0 , height: 3)
+        layer.shadowPath = UIBezierPath(rect: CGRect(x: 0,
+                                                     y: 0,
+                                                     width: 0,
+                                                     height: 0)).cgPath
+    }
 }
 
 extension UITextField{
@@ -101,6 +125,20 @@ extension UIImageView{
 //        self.layer.cornerRadius = self.frame.size.height/2
 //        self.layer.masksToBounds = true
 //    }
+}
+
+extension UIColor{
+    
+}
+
+extension String{
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
 }
 
 
