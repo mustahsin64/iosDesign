@@ -100,6 +100,18 @@ extension UIView{
                                                      height: layer.shadowRadius)).cgPath
     }
     
+    func bottomGreenShadow() {
+        layer.masksToBounds = false
+        layer.shadowRadius = 5
+        layer.shadowOpacity = 0.8
+        layer.shadowColor = UIColor(named: "correctInput")?.cgColor
+        layer.shadowOffset = CGSize(width: 0 , height: 2)
+        layer.shadowPath = UIBezierPath(rect: CGRect(x: 0,
+                                                     y: bounds.maxY - layer.shadowRadius,
+                                                     width: bounds.width,
+                                                     height: layer.shadowRadius)).cgPath
+    }
+    
     func removeBottomShadow() {
         layer.masksToBounds = true
         layer.shadowRadius = 0
@@ -110,6 +122,26 @@ extension UIView{
                                                      y: 0,
                                                      width: 0,
                                                      height: 0)).cgPath
+    }
+    
+    func transparentShadowView() -> UIView
+    {
+        let blackShadowView = UIView()
+        blackShadowView.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
+        blackShadowView.tag = 201
+        blackShadowView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        return blackShadowView
+    }
+    
+    func transparentShadowButton(vc:UIViewController,selector:Selector) -> UIButton
+    {
+        let blackShadowButton = UIButton()
+        blackShadowButton.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
+        blackShadowButton.tag = 201
+        blackShadowButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        
+        blackShadowButton.addTarget(vc, action: selector, for: .touchUpInside)
+        return blackShadowButton
     }
 }
 

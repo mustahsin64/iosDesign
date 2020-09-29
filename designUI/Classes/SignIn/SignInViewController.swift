@@ -26,6 +26,9 @@ class SignInViewController: UIViewController {
     var signinLogic: SignInInteractor?
     var validEmail = false
     var validPassword = false
+    var validEmailForPasswordRecovery = false
+    
+    var passwordRecoveryView = PasswordRecoveryView()
 
     
     //MARK: View Cycle
@@ -38,6 +41,25 @@ class SignInViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         emailField.becomeFirstResponder()
+        
+//        let blackShadowView = UIView()
+//        self.view.addSubview(blackShadowView)
+//        blackShadowView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+//        blackShadowView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+//
+//        let geopointView = UIView()
+//        self.view.addSubview(geopointView)
+//        geopointView.frame = CGRect(x: 0, y: 800, width: self.view.frame.size.width, height: 300)
+//        geopointView.backgroundColor = .systemTeal
+//        UIView.animate(withDuration: 2) {
+//            geopointView.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 300)
+//        } completion: { (finished) in
+//
+//        }
+        
+        
+
+        
         //Router.shared.gotoMainTab(from: self)
     }
     
@@ -49,6 +71,7 @@ class SignInViewController: UIViewController {
         
         emailHolderView.giveRoundedCorner(value: 5)
         passwordHolderView.giveRoundedCorner(value: 5)
+        signInButton.giveRoundedCorner(value: 5)
         
         emailField.delegate = self
         passwordField.delegate = self
@@ -62,12 +85,69 @@ class SignInViewController: UIViewController {
     
     private func testFillup(){
         self.emailField.text = "testsiam@test.com"
-        self.passwordField.text = "narutosh129"
+        self.passwordField.text = "12345"
+    }
+    
+    private func showPasswordRecoveryWithAnimation()
+    {
+        resignAllTextFields()
+        
+        //3. Add a transparent layer to tap to dismiss the password view
+        let transparentButton = self.view.transparentShadowButton(vc: self, selector:#selector(self.removePasswordRecoveryView(sender:)))
+        self.view.addSubview(transparentButton)
+        transparentButton.translatesAutoresizingMaskIntoConstraints = false
+        transparentButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        transparentButton.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        transparentButton.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        transparentButton.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
+        
+        
+        
+        //1. Password view init & customization
+        passwordRecoveryView = Bundle.main.loadNibNamed("PasswordRecoveryView", owner: self, options: nil)![0] as! PasswordRecoveryView
+        passwordRecoveryView.containerView.giveRoundedCorner(value: 10.0)
+        passwordRecoveryView.frame = CGRect(x: 0, y: 700, width: self.view.frame.size.width, height: passwordRecoveryView.frame.size.height)
+        passwordRecoveryView.recoveryEmailHolderView.giveGenericBorder()
+        passwordRecoveryView.recoveryEmailHolderView.giveRoundedCorner(value: 5)
+        passwordRecoveryView.sendButton.giveRoundedCorner(value: 5)
+        passwordRecoveryView.recoveryEmailField.delegate = self
+        passwordRecoveryView.sendButton.addTarget(self, action: #selector(self.sendTemporaryAction(sender:)), for: .touchUpInside)
+        passwordRecoveryView.delegate = self
+        
+        self.view.addSubview(passwordRecoveryView)
+        passwordRecoveryView.translatesAutoresizingMaskIntoConstraints = false
+        passwordRecoveryView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        passwordRecoveryView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        passwordRecoveryView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        passwordRecoveryView.heightAnchor.constraint(equalToConstant: 350).isActive = true
+        passwordRecoveryView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -25).isActive = true
+        
+        //2. Animate password view from Bottom
+        Utilities.animateViewFromBottom(view: self.passwordRecoveryView) { (finished) in
+            self.view.bringSubviewToFront(self.passwordRecoveryView)
+            self.passwordRecoveryView.recoveryEmailField.becomeFirstResponder()
+        }
+    }
+    
+    @objc func removePasswordRecoveryView(sender:UIButton)
+    {
+        self.passwordRecoveryView.recoveryEmailField.resignFirstResponder()
+        Utilities.removeViewWithAnimationForConstraint(view: passwordRecoveryView) { (finished) in
+            self.passwordRecoveryView.removeFromSuperview()
+            sender.removeFromSuperview()
+        }
+    }
+    
+    @objc func sendTemporaryAction(sender:UIButton)
+    {
+        
     }
     
     //MARK: IBActions
     @IBAction func SignInClicked(_ sender: UIButton)
     {
+        showPasswordRecoveryWithAnimation()
+        return
         if(validEmail && validPassword){
             signinLogic = SignInInteractor.init(email: emailField.text!, password: passwordField.text!)
             signinLogic?.delegate = self
@@ -134,7 +214,6 @@ class SignInViewController: UIViewController {
             {
                 validEmail = true
                 hideWithAnimation(hide: true, label: wrongEmailLabel)
-                //wrongEmailLabel.isHidden = true
                 DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
                     self.appearCorrectInput(v: self.emailHolderView)
                 }
@@ -143,7 +222,6 @@ class SignInViewController: UIViewController {
             {
                 validEmail = false
                 hideWithAnimation(hide: false, label: wrongEmailLabel)
-                //wrongEmailLabel.isHidden = false
                 DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
                     self.appearWrongInput(v: self.emailHolderView)
                 }
@@ -155,7 +233,6 @@ class SignInViewController: UIViewController {
             {
                 validPassword = true
                 hideWithAnimation(hide: true, label: wrongPasswordLabel)
-                //wrongPasswordLabel.isHidden = true
                 DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
                     self.appearCorrectInput(v: self.passwordHolderView)
                 }
@@ -164,20 +241,51 @@ class SignInViewController: UIViewController {
             {
                 validPassword = false
                 hideWithAnimation(hide: false, label: wrongPasswordLabel)
-                //wrongPasswordLabel.isHidden = false
                 DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
                     self.appearWrongInput(v: self.passwordHolderView)
                 }
             }
         }
         
+        else if(textField == passwordRecoveryView.recoveryEmailField){
+            
+            if(self.validateEmail(text: currentText))
+            {
+                validEmailForPasswordRecovery = true
+                hideWithAnimation(hide: true, label: self.passwordRecoveryView.wrongRecoveryLabel)
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+                    self.appearCorrectInput(v: self.passwordRecoveryView.recoveryEmailHolderView)
+                }
+            }
+            else
+            {
+                validEmailForPasswordRecovery = false
+                hideWithAnimation(hide: false, label: self.passwordRecoveryView.wrongRecoveryLabel)
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+                    self.appearWrongInput(v: self.passwordRecoveryView.recoveryEmailHolderView)
+                }
+            }
+            
+            if(validEmailForPasswordRecovery)
+            {
+                self.passwordRecoveryView.sendButton.backgroundColor = UIColor(named: "correctInput")
+                self.passwordRecoveryView.sendButton.bottomGreenShadow()
+            }
+            else{
+                self.passwordRecoveryView.sendButton.backgroundColor = UIColor(red: 234/255, green: 234/255, blue: 234/255, alpha: 1)
+                self.passwordRecoveryView.sendButton.removeBottomShadow()
+            }
+        }
+        
         if(validEmail && validPassword)
         {
             self.signInButton.backgroundColor = UIColor(named: "correctInput")
+            self.signInButton.bottomGreenShadow()
         }
         else
         {
             self.signInButton.backgroundColor = UIColor(red: 234/255, green: 234/255, blue: 234/255, alpha: 1)
+            self.signInButton.removeBottomShadow()
         }
     }
     
@@ -188,6 +296,7 @@ class SignInViewController: UIViewController {
     
     private func appearWrongInput(v:UIView)
     {
+        v.giveGenericBorder()
         v.setBorderColor(color: .red)
         v.backgroundColor = UIColor.init(named: "inputError")
         v.removeBottomShadow()
@@ -195,9 +304,16 @@ class SignInViewController: UIViewController {
     
     private func appearCorrectInput(v:UIView)
     {
+        v.giveGenericBorder()
         v.setBorderColor(color: UIColor.init(named: "correctInput") ?? .green)
         v.backgroundColor = .clear
         v.addBottomShadow()
+    }
+    
+    private func resignAllTextFields()
+    {
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
     }
 }
 
@@ -205,8 +321,7 @@ class SignInViewController: UIViewController {
 
 extension SignInViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        emailField.resignFirstResponder()
-        passwordField.resignFirstResponder()
+        textField.resignFirstResponder()
         return true
     }
     
@@ -216,6 +331,12 @@ extension SignInViewController: UITextFieldDelegate{
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
+    }
+}
+
+extension SignInViewController: PasswordRecoveryViewDelegate{
+    func recoveryEmailFieldEditChanged(_ sender: UITextField) {
+        colorizeFiledsAccordingToValidity(currentText: sender.text ?? "", textField: passwordRecoveryView.recoveryEmailField)
     }
 }
 
