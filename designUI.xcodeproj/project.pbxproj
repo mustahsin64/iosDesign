@@ -20,6 +20,11 @@
 		1539ADF2251F7D07004B11FC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539ADF1251F7D07004B11FC /* Router.swift */; };
 		1539ADF9251FA567004B11FC /* OrderTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539ADF8251FA567004B11FC /* OrderTopView.swift */; };
 		1539AE04251FAD49004B11FC /* CurrentOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539AE03251FAD49004B11FC /* CurrentOrderVC.swift */; };
+		15814323252744AF00D46203 /* NotificationPopupSuccess.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15814322252744AF00D46203 /* NotificationPopupSuccess.xib */; };
+		15814328252744BD00D46203 /* NotificationPopupSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15814327252744BD00D46203 /* NotificationPopupSuccess.swift */; };
+		158143312527640F00D46203 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158143302527640F00D46203 /* NotificationService.swift */; };
+		1581433625276B1700D46203 /* NotificationPopupError.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1581433525276B1700D46203 /* NotificationPopupError.xib */; };
+		1581433B25276B2500D46203 /* NotificationPopupError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1581433A25276B2500D46203 /* NotificationPopupError.swift */; };
 		158797852520DEA500024C81 /* NotificationBellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 158797842520DEA500024C81 /* NotificationBellView.xib */; };
 		1587978A2520E11C00024C81 /* NotificationBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158797892520E11C00024C81 /* NotificationBellView.swift */; };
 		158797A62520EBAC00024C81 /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158797A52520EBAC00024C81 /* LaunchScreenVC.swift */; };
@@ -69,6 +74,11 @@
 		1539ADF1251F7D07004B11FC /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1539ADF8251FA567004B11FC /* OrderTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTopView.swift; sourceTree = "<group>"; };
 		1539AE03251FAD49004B11FC /* CurrentOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentOrderVC.swift; sourceTree = "<group>"; };
+		15814322252744AF00D46203 /* NotificationPopupSuccess.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationPopupSuccess.xib; sourceTree = "<group>"; };
+		15814327252744BD00D46203 /* NotificationPopupSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPopupSuccess.swift; sourceTree = "<group>"; };
+		158143302527640F00D46203 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		1581433525276B1700D46203 /* NotificationPopupError.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationPopupError.xib; sourceTree = "<group>"; };
+		1581433A25276B2500D46203 /* NotificationPopupError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPopupError.swift; sourceTree = "<group>"; };
 		1587974F2520C76A00024C81 /* SDWebImageMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImageMapKit.framework; path = ../../Desktop/untitled/Carthage/Build/iOS/SDWebImageMapKit.framework; sourceTree = "<group>"; };
 		158797842520DEA500024C81 /* NotificationBellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationBellView.xib; sourceTree = "<group>"; };
 		158797892520E11C00024C81 /* NotificationBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBellView.swift; sourceTree = "<group>"; };
@@ -147,6 +157,7 @@
 		1539AD1A251F023D004B11FC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1581432F252763FA00D46203 /* Services */,
 				1539AE02251FAD35004B11FC /* CurrentOrder */,
 				1539ADEC251F7B22004B11FC /* HomeTabbarVC.swift */,
 				1539AD1B251F023D004B11FC /* SignIn */,
@@ -182,6 +193,10 @@
 				158797892520E11C00024C81 /* NotificationBellView.swift */,
 				1518918C252370DF00315958 /* PasswordRecoveryView.xib */,
 				151891912523727D00315958 /* PasswordRecoveryView.swift */,
+				15814322252744AF00D46203 /* NotificationPopupSuccess.xib */,
+				15814327252744BD00D46203 /* NotificationPopupSuccess.swift */,
+				1581433525276B1700D46203 /* NotificationPopupError.xib */,
+				1581433A25276B2500D46203 /* NotificationPopupError.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -193,6 +208,14 @@
 				1539AE03251FAD49004B11FC /* CurrentOrderVC.swift */,
 			);
 			path = CurrentOrder;
+			sourceTree = "<group>";
+		};
+		1581432F252763FA00D46203 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				158143302527640F00D46203 /* NotificationService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		1587978E2520E5D200024C81 /* StoryBoards */ = {
@@ -393,9 +416,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1581433625276B1700D46203 /* NotificationPopupError.xib in Resources */,
 				15AEE680251DEED6002E4DE5 /* LaunchScreen.storyboard in Resources */,
 				1539ADD8251F774B004B11FC /* HomeTabbar.storyboard in Resources */,
 				15AEE67D251DEED6002E4DE5 /* Assets.xcassets in Resources */,
+				15814323252744AF00D46203 /* NotificationPopupSuccess.xib in Resources */,
 				15AEE67B251DEED5002E4DE5 /* Main.storyboard in Resources */,
 				1518918D252370DF00315958 /* PasswordRecoveryView.xib in Resources */,
 				158797852520DEA500024C81 /* NotificationBellView.xib in Resources */,
@@ -530,13 +555,16 @@
 				1539ACE4251EF73D004B11FC /* ProfileAPIManager.swift in Sources */,
 				15AEE678251DEED5002E4DE5 /* SignInViewController.swift in Sources */,
 				1539ADF9251FA567004B11FC /* OrderTopView.swift in Sources */,
+				158143312527640F00D46203 /* NotificationService.swift in Sources */,
 				1539ADF2251F7D07004B11FC /* Router.swift in Sources */,
 				1587978A2520E11C00024C81 /* NotificationBellView.swift in Sources */,
 				1518919A25237B9F00315958 /* Utilities.swift in Sources */,
+				1581433B25276B2500D46203 /* NotificationPopupError.swift in Sources */,
 				1539ADED251F7B22004B11FC /* HomeTabbarVC.swift in Sources */,
 				15AEE674251DEED5002E4DE5 /* AppDelegate.swift in Sources */,
 				1539AD2E251F0BAF004B11FC /* Extensions.swift in Sources */,
 				1539AD10251EF80D004B11FC /* APIConstant.swift in Sources */,
+				15814328252744BD00D46203 /* NotificationPopupSuccess.swift in Sources */,
 				15AEE676251DEED5002E4DE5 /* SceneDelegate.swift in Sources */,
 				1539AD28251F02F3004B11FC /* SignInInteractor.swift in Sources */,
 				158797A62520EBAC00024C81 /* LaunchScreenVC.swift in Sources */,

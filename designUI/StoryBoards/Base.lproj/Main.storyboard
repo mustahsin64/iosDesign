@@ -129,7 +129,7 @@
                                                         <rect key="frame" x="40" y="3" width="263" height="54.333333333333336"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                         <connections>
                                                             <action selector="emailEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="WkR-Mp-o3L"/>
                                                         </connections>
@@ -257,14 +257,14 @@
                                             <action selector="SignInClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gll-he-GP6"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Forgot your password? Click to restore" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3gM-so-oHv">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Forgot your password? Click to restore" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gM-so-oHv">
                                         <rect key="frame" x="50" y="278.33333333333337" width="275" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="UAY-zM-V4w"/>
                                         </constraints>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
@@ -386,7 +386,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aae-5K-qpe" userLabel="Bottom">
                                 <rect key="frame" x="0.0" y="609" width="375" height="203"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Not registered yet? Lets start" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wjw-lW-gJQ">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Not registered yet? Lets start" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjw-lW-gJQ">
                                         <rect key="frame" x="50" y="52" width="275" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>

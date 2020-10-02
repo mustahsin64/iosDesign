@@ -37,10 +37,10 @@ class LaunchScreenVC: UIViewController {
     
     private func addGradientColor()
     {
-        let layer = UIView(frame: CGRect(x: 0, y: 0, width: 414, height: 896))
+        let layer = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
 
         let gradient = CAGradientLayer()
-        gradient.frame = CGRect(x: 0, y: 0, width: 414, height: 896)
+        gradient.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         gradient.colors = [
           UIColor(red:0.19, green:0.78, blue:0.58, alpha:1).cgColor,
           UIColor(red:0.19, green:0.78, blue:0.58, alpha:1).cgColor,

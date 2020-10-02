@@ -10,7 +10,6 @@ import UIKit
 
 class Utilities: NSObject {
     
-    
     //MARK: View related
     class func animateViewFromBottom(view:UIView,duration:(Double) = 0.3, completions: @escaping ((Bool) -> Void))
     {
@@ -50,7 +49,7 @@ class Utilities: NSObject {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         
-        let myMutableString = NSMutableAttributedString(string: fullText,attributes: [ NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        let myMutableString = NSMutableAttributedString(string: fullText,attributes: [ NSAttributedString.Key.paragraphStyle: paragraphStyle, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)])
         if let nsRange = fullText.range(of: coloredText)?.nsRange(in: fullText) {
             (fullText as NSString).substring(with: nsRange)
             myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: color as Any, range:nsRange)
