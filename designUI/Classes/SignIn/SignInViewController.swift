@@ -16,7 +16,7 @@ class SignInViewController: UIViewController {
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var wrongEmailLabel: UILabel!
     @IBOutlet var wrongPasswordLabel: UILabel!
-    
+    @IBOutlet var forgotPasswordTextView: UITextView!
     @IBOutlet var signInButton: UIButton!
     
     @IBOutlet var emailHolderView: UIView!
@@ -42,24 +42,6 @@ class SignInViewController: UIViewController {
         super.viewDidAppear(animated)
         emailField.becomeFirstResponder()
         
-//        let blackShadowView = UIView()
-//        self.view.addSubview(blackShadowView)
-//        blackShadowView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-//        blackShadowView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-//
-//        let geopointView = UIView()
-//        self.view.addSubview(geopointView)
-//        geopointView.frame = CGRect(x: 0, y: 800, width: self.view.frame.size.width, height: 300)
-//        geopointView.backgroundColor = .systemTeal
-//        UIView.animate(withDuration: 2) {
-//            geopointView.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 300)
-//        } completion: { (finished) in
-//
-//        }
-        
-        
-
-        
         //Router.shared.gotoMainTab(from: self)
     }
     
@@ -80,8 +62,32 @@ class SignInViewController: UIViewController {
         passwordField.giveDefaultPlaceHolder(text: "Enter password")
         
         
+        
+        let forgotText = "Forgot your password? Click to restore"
+        let coloringText = "Click to restore"
+        let mutableAttributedStr = Utilities.colorTextView(with: forgotText, coloredText: coloringText, color: UIColor(named: "correctInput") ?? .green)
+        forgotPasswordTextView.attributedText = mutableAttributedStr
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnTextView(_:)))
+        forgotPasswordTextView.addGestureRecognizer(tapGesture)
+        
         //testFillup()
     }
+    
+    @objc private final func tapOnTextView(_ tapGesture: UITapGestureRecognizer){
+
+      let point = tapGesture.location(in: forgotPasswordTextView)
+        if let detectedWord = Utilities.getWordAtPosition(point, textView: forgotPasswordTextView)
+      {
+            print(detectedWord)
+            if(detectedWord == "Click" || detectedWord == "to" || detectedWord == "restore")
+            {
+                self.showPasswordRecoveryWithAnimation()
+            }
+      }
+    }
+    
+    
     
     private func testFillup(){
         self.emailField.text = "testsiam@test.com"
@@ -146,8 +152,6 @@ class SignInViewController: UIViewController {
     //MARK: IBActions
     @IBAction func SignInClicked(_ sender: UIButton)
     {
-        showPasswordRecoveryWithAnimation()
-        return
         if(validEmail && validPassword){
             signinLogic = SignInInteractor.init(email: emailField.text!, password: passwordField.text!)
             signinLogic?.delegate = self

@@ -10,8 +10,8 @@ import UIKit
 
 class Utilities: NSObject {
     
-    //func animate(withDuration duration: TimeInterval, animations: @escaping () -> Void, completion: ((Bool) -> Void)? = nil)
     
+    //MARK: View related
     class func animateViewFromBottom(view:UIView,duration:(Double) = 0.3, completions: @escaping ((Bool) -> Void))
     {
         view.alpha = 0
@@ -41,6 +41,34 @@ class Utilities: NSObject {
         } completion: { (finished) in
             completions(finished)
         }
+    }
+    
+    //MARK: String / Text related
+    
+    class func colorTextView(with fullText:String, coloredText: String, color:UIColor) -> NSMutableAttributedString
+    {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        
+        let myMutableString = NSMutableAttributedString(string: fullText,attributes: [ NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        if let nsRange = fullText.range(of: coloredText)?.nsRange(in: fullText) {
+            (fullText as NSString).substring(with: nsRange)
+            myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: color as Any, range:nsRange)
+        }
+        
+        return myMutableString
+    }
+    
+    class func getWordAtPosition(_ point: CGPoint, textView:UITextView) -> String?{
+        if let textPosition = textView.closestPosition(to: point)
+        {
+            if let range = textView.tokenizer.rangeEnclosingPosition(textPosition, with: .word, inDirection: UITextDirection(rawValue: 1))
+          {
+            return textView.text(in: range)
+          }
+        }
+    return nil
+        
     }
 
 }
