@@ -48,10 +48,16 @@ class NotificationService: NSObject {
             notificationPopupErrorView.textView.text = text
             parent.view.addSubview(notificationPopupErrorView)
             
+            var viewHeight:CGFloat = 56.0
+            if(text.count > 30)
+            {
+                viewHeight = 90.0
+            }
+            
             notificationPopupErrorView.leftAnchor.constraint(equalTo: parent.view.leftAnchor, constant: 24).isActive = true
             notificationPopupErrorView.rightAnchor.constraint(equalTo: parent.view.rightAnchor, constant: -24).isActive = true
             notificationPopupErrorView.topAnchor.constraint(equalTo: parent.view.topAnchor, constant: 44).isActive = true
-            notificationPopupErrorView.heightAnchor.constraint(equalToConstant: 56).isActive = true
+            notificationPopupErrorView.heightAnchor.constraint(equalToConstant: viewHeight).isActive = true
             
             //play an alert sound
             //https://github.com/TUNER88/iOSSystemSoundsLibrary

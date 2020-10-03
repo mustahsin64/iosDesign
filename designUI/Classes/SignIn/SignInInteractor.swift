@@ -11,19 +11,28 @@ import UIKit
 protocol SignInLogicProtocol {
     func signInSuccessful()
     func signInFailed(with errorMsg:String)
+    
+    func mailMyPasswordSuccess(with msg:String)
+    func mailMyPasswordFailed(with msg:String)
 }
 
 class SignInInteractor: NSObject {
     
-    let apimanager = ProfileAPIManager()
+    let apimanager = AuthAPI()
     var delegate: SignInLogicProtocol?
     
     var email:String = ""
     var password:String = ""
+    var forgetPasswordMail:String?
     
     init(email:String,password:String){
         self.email = email
         self.password = password
+    }
+    
+    init(forgetPasswordMail:String)
+    {
+        self.forgetPasswordMail = forgetPasswordMail
     }
     
     func callSignInAPI(){
@@ -32,9 +41,23 @@ class SignInInteractor: NSObject {
         apimanager.signIn(with: email, and: password)
     }
     
+    func callForgetPasswordAPI()
+    {
+        validateForgetPassWordMail()
+        apimanager.delegate = self
+        apimanager.mailMyPassword(to: forgetPasswordMail!)
+    }
+    
     func validateParameters(){
         email = email.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         password = password.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+    }
+    
+    func validateForgetPassWordMail()
+    {
+        if var forgetPasswordMail = self.forgetPasswordMail{
+            forgetPasswordMail = forgetPasswordMail.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        }
     }
 }
 
@@ -57,4 +80,18 @@ extension SignInInteractor: SignInAPIProtocol{
         }
     }
     
+    func forgetPassword(response: ForgetPasswordJson) {
+        if (response.success == true)
+        {
+            if let delegate = self.delegate{
+                delegate.mailMyPasswordSuccess(with: response.response ?? "Successfully mail sent")
+            }
+        }
+        else{
+            if let delegate = self.delegate{
+                delegate.mailMyPasswordFailed(with: response.response ?? "Failed to send mail")
+            }
+        }
+        
+    }
 }

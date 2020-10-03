@@ -27,6 +27,7 @@ class SignInViewController: UIViewController {
     var validEmail = false
     var validPassword = false
     var validEmailForPasswordRecovery = false
+    var forgetPasswordMail:String?
     
     var passwordRecoveryView : PasswordRecoveryView?
     var transparentButton : UIButton?
@@ -151,13 +152,6 @@ class SignInViewController: UIViewController {
         }
     }
     
-    @objc func sendTemporaryAction(sender:UIButton)
-    {
-        if let transparentButton = self.transparentButton{
-            removePasswordRecoveryView(sender: transparentButton)
-        }
-    }
-    
     //MARK: IBActions
     @IBAction func SignInClicked(_ sender: UIButton)
     {
@@ -168,6 +162,16 @@ class SignInViewController: UIViewController {
         }
         else{
             self.showToastAtBottom(message: "All fields are required")
+        }
+    }
+    
+    @objc func sendTemporaryAction(sender:UIButton)
+    {
+        if(validEmailForPasswordRecovery)
+        {
+            signinLogic = SignInInteractor.init(forgetPasswordMail: forgetPasswordMail!)
+            signinLogic?.delegate = self
+            signinLogic?.callForgetPasswordAPI()
         }
     }
     
@@ -267,6 +271,7 @@ class SignInViewController: UIViewController {
             if(self.validateEmail(text: currentText))
             {
                 validEmailForPasswordRecovery = true
+                forgetPasswordMail = currentText
                 hideWithAnimation(hide: true, label: passwordRecoveryView.wrongRecoveryLabel)
                 DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
                     self.appearCorrectInput(v: passwordRecoveryView.recoveryEmailHolderView)
@@ -361,6 +366,7 @@ extension SignInViewController: PasswordRecoveryViewDelegate{
 }
 
 extension SignInViewController: SignInLogicProtocol{
+    
     func signInFailed(with errorMsg: String) {
         NotificationService.showNotificationErrorView(on: self, text: errorMsg, removeAfter: 3)
         //self.showToastAtBottom(message: errorMsg)
@@ -368,6 +374,24 @@ extension SignInViewController: SignInLogicProtocol{
     
     func signInSuccessful() {
         Router.shared.gotoMainTab(from: self)
+    }
+    
+    func mailMyPasswordSuccess(with msg: String) {
+        if let transparentButton = self.transparentButton{
+            removePasswordRecoveryView(sender: transparentButton)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+            NotificationService.showNotificationSuccessView(on: self, text: msg, removeAfter: 2.5)
+        }
+    }
+    
+    func mailMyPasswordFailed(with msg: String) {
+        if let transparentButton = self.transparentButton{
+            removePasswordRecoveryView(sender: transparentButton)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+            NotificationService.showNotificationErrorView(on: self, text: msg, removeAfter: 2.5)
+        }
     }
     
 }

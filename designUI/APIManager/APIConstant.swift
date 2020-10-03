@@ -8,6 +8,8 @@
 
 import Foundation
 
+let debugAPILog:Bool = true
 
-let baseURL:String = "https://dispatch.questtag.com/"
+
+let baseURL:String = "https://dispatch.shipday.com/"
 

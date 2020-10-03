@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150348EF252882AB00B3339C /* ForgetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150348EE252882AB00B3339C /* ForgetPasswordModel.swift */; };
 		1518918D252370DF00315958 /* PasswordRecoveryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1518918C252370DF00315958 /* PasswordRecoveryView.xib */; };
 		151891922523727D00315958 /* PasswordRecoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151891912523727D00315958 /* PasswordRecoveryView.swift */; };
 		1518919A25237B9F00315958 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1518919925237B9F00315958 /* Utilities.swift */; };
-		1539ACE4251EF73D004B11FC /* ProfileAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539ACE3251EF73D004B11FC /* ProfileAPIManager.swift */; };
+		1539ACE4251EF73D004B11FC /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539ACE3251EF73D004B11FC /* AuthAPI.swift */; };
 		1539AD10251EF80D004B11FC /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539AD0F251EF80D004B11FC /* APIConstant.swift */; };
 		1539AD16251EFBC2004B11FC /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539AD15251EFBC2004B11FC /* SignInModel.swift */; };
 		1539AD28251F02F3004B11FC /* SignInInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1539AD27251F02F3004B11FC /* SignInInteractor.swift */; };
@@ -60,10 +61,11 @@
 
 /* Begin PBXFileReference section */
 		1075BF39B016247D7BE041D5 /* Pods-designUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-designUI.debug.xcconfig"; path = "Target Support Files/Pods-designUI/Pods-designUI.debug.xcconfig"; sourceTree = "<group>"; };
+		150348EE252882AB00B3339C /* ForgetPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordModel.swift; sourceTree = "<group>"; };
 		1518918C252370DF00315958 /* PasswordRecoveryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordRecoveryView.xib; sourceTree = "<group>"; };
 		151891912523727D00315958 /* PasswordRecoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryView.swift; sourceTree = "<group>"; };
 		1518919925237B9F00315958 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		1539ACE3251EF73D004B11FC /* ProfileAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPIManager.swift; sourceTree = "<group>"; };
+		1539ACE3251EF73D004B11FC /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		1539AD0F251EF80D004B11FC /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		1539AD15251EFBC2004B11FC /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		1539AD27251F02F3004B11FC /* SignInInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInInteractor.swift; sourceTree = "<group>"; };
@@ -139,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				1539AD14251EFBA6004B11FC /* CodableJsonModels */,
-				1539ACE3251EF73D004B11FC /* ProfileAPIManager.swift */,
+				1539ACE3251EF73D004B11FC /* AuthAPI.swift */,
 				1539AD0F251EF80D004B11FC /* APIConstant.swift */,
 				1539ADD3251F73B8004B11FC /* api_response.md */,
 			);
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				1539AD15251EFBC2004B11FC /* SignInModel.swift */,
+				150348EE252882AB00B3339C /* ForgetPasswordModel.swift */,
 			);
 			path = CodableJsonModels;
 			sourceTree = "<group>";
@@ -552,7 +555,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				151891922523727D00315958 /* PasswordRecoveryView.swift in Sources */,
-				1539ACE4251EF73D004B11FC /* ProfileAPIManager.swift in Sources */,
+				1539ACE4251EF73D004B11FC /* AuthAPI.swift in Sources */,
 				15AEE678251DEED5002E4DE5 /* SignInViewController.swift in Sources */,
 				1539ADF9251FA567004B11FC /* OrderTopView.swift in Sources */,
 				158143312527640F00D46203 /* NotificationService.swift in Sources */,
@@ -570,6 +573,7 @@
 				158797A62520EBAC00024C81 /* LaunchScreenVC.swift in Sources */,
 				1539AD16251EFBC2004B11FC /* SignInModel.swift in Sources */,
 				1539AE04251FAD49004B11FC /* CurrentOrderVC.swift in Sources */,
+				150348EF252882AB00B3339C /* ForgetPasswordModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

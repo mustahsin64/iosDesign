@@ -22,8 +22,8 @@
                         <constraint firstAttribute="height" constant="40" id="sZX-6V-fNt"/>
                     </constraints>
                 </imageView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Error message" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0t-HV-haW">
-                    <rect key="frame" x="60" y="15" width="257" height="53"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Error message" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0t-HV-haW">
+                    <rect key="frame" x="60" y="10" width="257" height="50"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="textColor" systemColor="labelColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -34,9 +34,9 @@
             <color key="backgroundColor" red="0.88627450980392153" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="i0t-HV-haW" firstAttribute="leading" secondItem="jYY-y2-9Wh" secondAttribute="trailing" constant="10" id="4vL-VX-ijo"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="i0t-HV-haW" secondAttribute="bottom" constant="2" id="8xE-tN-pOq"/>
-                <constraint firstItem="i0t-HV-haW" firstAttribute="top" secondItem="jYY-y2-9Wh" secondAttribute="top" id="E7g-G8-i6h"/>
+                <constraint firstItem="i0t-HV-haW" firstAttribute="top" secondItem="jYY-y2-9Wh" secondAttribute="top" constant="-5" id="AJl-JP-odK"/>
                 <constraint firstItem="jYY-y2-9Wh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TMe-3A-g2S"/>
+                <constraint firstItem="i0t-HV-haW" firstAttribute="bottom" secondItem="jYY-y2-9Wh" secondAttribute="bottom" constant="5" id="WeX-vp-gtb"/>
                 <constraint firstItem="jYY-y2-9Wh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="kqD-kD-ScE"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="i0t-HV-haW" secondAttribute="trailing" constant="10" id="nBC-sA-Geo"/>
             </constraints>
